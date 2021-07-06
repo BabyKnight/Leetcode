@@ -27,8 +27,7 @@ int romanToInt(char * s){
         if (previous < hashmap[ s[i]- 'A']){
             sum -= previous*2;
         }
-        sum += hashmap[s[i] - 'A'];
-        previous = hashmap[s[i] - 'A'];
+        sum += (previous = hashmap[s[i] - 'A']);
     }
     return sum;
 }
