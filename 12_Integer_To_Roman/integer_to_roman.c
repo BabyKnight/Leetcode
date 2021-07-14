@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 char * intToRoman(int);
 
@@ -13,24 +15,24 @@ int main(){
 
 
 char * intToRoman(int num){
-    char symbol[4][2] = { {'I','V'}, {'X','L'}, {'C','D'}, {'M',' '} };
-    
+
+    int number[13] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    char* symbol[13] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+    char *result = (char*)malloc(sizeof(char)*13);
+    //static char[13];
     int temp = num;
-    int val = 0;
-
-    // from largest to smallest
-    for(int i=3; i>=0; i--){
-        // divided by 1000, 100, 10, and 1
-        // val could be 0 - 9
-        val = temp/pow(10, i);
-        printf("%d\n", val);
-        
-
-        temp %= (int)pow(10, i);
-        printf("%d\n", temp);
+    int count = 0;
+    for(int i=0; i<13; i++){
+        if(temp/number[i]!=0){
+            count = temp/number[i];
+            for(int j=0; j<count; j++){
+                strcpy(result + strlen(result), symbol[i]);
+            }
+            temp %= number[i];
+        }
+    
     }
-
-    return "end";
-
-
+    
+    return result;
 }
