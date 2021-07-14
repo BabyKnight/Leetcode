@@ -20,6 +20,7 @@ char * intToRoman(int num){
     char* symbol[13] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
     char *result = (char*)malloc(sizeof(char)*13);
+    result[0] = '\0';
     //static char[13];
     int temp = num;
     int count = 0;
