@@ -19,6 +19,7 @@ class Solution:
         }
         res = ''
         for key in num_map:
+            # NOTE! / will return a float result, but // will return a int result
             if num // key != 0:
                 count = num // key
                 res += count * num_map[key]
