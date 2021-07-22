@@ -52,3 +52,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Python swap files
+*.pyc
+
+# executable solution file (assume all the sulotion compiled to "solution" )
+solution
