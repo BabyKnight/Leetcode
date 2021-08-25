@@ -73,23 +73,42 @@ struct ListNode* MergeTwoLists(struct ListNode* l1, struct ListNode* l2){
 		if(q!=NULL)
 				curr->next = q;
 		return res;
-
-
 }
+
+struct ListNode* Merge(struct ListNode* l1, struct ListNode* l2)
+{
+		struct ListNode *p, *q;
+		p = l1, q = l2;
+		if(p == NULL)
+				return q;
+		else if (q == NULL)
+				return p;
+		else if (p->val <= q->val){
+				p->next = Merge(p->next, q);
+				return p;
+		}
+		else{
+			q->next = Merge(p, q->next);
+			return q;
+		}
+}
+
 
 int main()
 {
 		int a[5] = {1, 3, 5, 7, 9};
 		int b[6] = {0, 2, 4, 6, 8, 10};
 
-		struct ListNode *ra, *rb, *rc; 
+		struct ListNode *ra, *rb, *rc, *rd; 
 		ra = create(a, 5);
 		print_node(ra);
 		rb = create(b, 6);
 		print_node(rb);
-		rc = MergeTwoLists(ra, rb);
-		print_node(rc);
+		//rc = MergeTwoLists(ra, rb);
+		//print_node(rc);
 
+		rd = Merge(ra, rb);
+		print_node(rd);
 
 
 }
