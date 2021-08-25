@@ -38,6 +38,18 @@ class Solution:
 						curr.next = q
 
 				return res
+
+		def merge2lists(self, l1, l2):
+				if l1 is None:
+						return l2
+				elif l2 is None:
+						return l1
+				elif l1.val < l2.val:
+						l1.next = self.merge2lists(l1.next, l2)
+						return l1
+				else:
+						l2.next= self.merge2lists(l1, l2.next)
+						return l2
 						
 
 def create_singly_linked_list(l):
@@ -69,5 +81,10 @@ if __name__ == '__main__':
 		print_list(lb)
 
 		s = Solution()
-		res = s.mergeTwoLists(la, lb)
-		print_list(res)
+		#res = s.mergeTwoLists(la, lb)
+		#print_list(res)
+
+		res2 = s.merge2lists(la, lb)
+		print_list(res2)
+
+
